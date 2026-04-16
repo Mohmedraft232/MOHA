@@ -3151,13 +3151,19 @@ function HOME()
         end
 
         if choice == 13 then
-            local confirm_exit = gg.alert("هل تريد إنهاء السكربت بالكامل؟", "✅ نعم، إنهاء", "↩️ لا")
-            if confirm_exit == 1 then
-                RF_RUNNING = false
-                gg.toast("🛑 تم إنهاء السكربت.")
-                return
-            end
-        end
+    local confirm_exit = gg.alert("هل تريد إنهاء السكربت بالكامل؟", "✅ نعم، إنهاء", "↩️ لا")
+    if confirm_exit == 1 then
+        RF_RUNNING = false
+
+        print ('დ ❤️لا تنسي الصلاة والسلام على رسول الله ❤️დ')
+        print ('დ ❤️ مــحــمــد رأفــت❤️ დ')
+
+        gg.skipRestoreState()
+        gg.setVisible(true)
+
+        os.exit()
+    end
+end
 
         local fn = actions[choice]
         if fn then
