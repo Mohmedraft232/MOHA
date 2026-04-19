@@ -3111,6 +3111,39 @@ function run_activity_event()
         gg.sleep(100)
     end
 end
+function MODd ()
+
+gg.alert("افتح مكان الهدايا الاول")
+gg.clearResults()
+
+gg.searchNumber("700051;1;20", gg.TYPE_DOUBLE)
+
+local results = gg.getResults(gg.getResultsCount())
+gg.addListItems(results)
+
+gg.refineNumber("1", gg.TYPE_DOUBLE)
+
+local r1 = gg.getResults(gg.getResultsCount())
+for i, v in ipairs(r1) do
+  v.value = 0
+end
+gg.setValues(r1)
+
+gg.clearResults()
+gg.loadResults(results)
+
+gg.refineNumber("20", gg.TYPE_DOUBLE)
+
+local r2 = gg.getResults(gg.getResultsCount())
+for i, v in ipairs(r2) do
+  v.value = 999999
+end
+gg.setValues(r2)
+
+gg.alert("ابعت طعام سمك بس بعدها الباقي هيتفتح")
+
+gg.toast("♥️👑 مــحــمــد رأفــت 👑♥️")
+end
 
 function HOME()
     local actions = {
@@ -3125,7 +3158,8 @@ function HOME()
         [9] = lab_crops_menu,
         [10] = neighbor_requests_menu,
         [11] = codes_repository_menu,
-        [12] = event_activity_menu
+        [12] = event_activity_menu, 
+[13] = MODd, 
     }
 
     local menu = {
@@ -3141,6 +3175,7 @@ function HOME()
         "🏘️ 『طلب مطورات من الجيران』",
         "📦 『مستودع الأكواد 』",
         "🎈 『الفاعلية』",
+"كرت حيوان", 
         "❌ خروج"
     }
 
@@ -3150,7 +3185,7 @@ function HOME()
             return
         end
 
-        if choice == 13 then
+        if choice == 14 then
     local confirm_exit = gg.alert("هل تريد إنهاء السكربت بالكامل؟", "✅ نعم، إنهاء", "↩️ لا")
     if confirm_exit == 1 then
         RF_RUNNING = false
