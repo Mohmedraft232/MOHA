@@ -3113,7 +3113,7 @@ function run_activity_event()
 end
 function MODd ()
 
-gg.alert("افتح مكان الهدايا الاول")
+gg.alert("افتح مكان الهدايا الاصدقاء")
 gg.clearResults()
 
 gg.searchNumber("700051;1;20", gg.TYPE_DOUBLE)
@@ -3175,7 +3175,7 @@ function HOME()
         "🏘️ 『طلب مطورات من الجيران』",
         "📦 『مستودع الأكواد 』",
         "🎈 『الفاعلية』",
-"كرت حيوان", 
+        "🐕 『كرت حيوان مضاعفه』", 
         "❌ خروج"
     }
 
