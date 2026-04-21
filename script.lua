@@ -1,3 +1,4 @@
+
 local _gg_choice = gg.choice
 gg.choice = function(menu, selected, message)
     while true do
