@@ -1,4 +1,3 @@
-
 local _gg_choice = gg.choice
 gg.choice = function(menu, selected, message)
     while true do
@@ -1315,22 +1314,22 @@ function luck_speed_menu()
         end
     end
     
-    if choice == 5 then -- Stop Speed
+    if choice == 6 then -- Stop Speed
         gg.setSpeed(1.0)
         gg.toast("تم إيقاف السرعة")
     end
     
-    if choice == 6 then -- Food House Luck
+    if choice == 7 then -- Food House Luck
         gg.unrandomizer(0, 1, 0, 0.01)
         gg.toast("تم تفعيل حظ بيت الطعام")
     end
     
-    if choice == 7 then -- Comprehensive Luck
+    if choice == 8 then -- Comprehensive Luck
         gg.unrandomizer(1, nil, 1, nil)
         gg.toast("تم التفعيل الشامل للحظ")
     end
     
-    if choice == 8 then return end
+    if choice == 9 then return end
     
     return luck_speed_menu()
 end
@@ -1338,7 +1337,7 @@ end
 function featured_menu()
     local menu = {
         "🗑️ تخلص من الخطأ (Destroy Error)",
-        "🎡 دنانير وهمي دولاب الحظ (Fake RC Lucky Wheel)",
+        "🎁 دنانير وهمي من الهدايا",
         "🎙️ الاستديو (Studio)",
         "🔥 إنتاج سريع عادي (Normal Fast Production)",
         "🚀 إنتاج سريع جميع الآلات والحيوانات (Fast Prod All)",
@@ -1361,18 +1360,27 @@ function featured_menu()
     end
     
     if choice == 2 then -- Fake RC Lucky Wheel
-        gg.alert("أولاً: افتح دولاب الفيش والعب دور (5 فيش).\nاختر صندوقاً واترك الآخر، وانظر لسعره.\nاكتب السعر هنا، وبعد انتهاء العد اشتري المنتج، وستزيد الدنانير.")
-        local input = gg.prompt({"أدخل الرقم (السعر):"}, {nil}, {"number"})
-        if input == nil then return end
-        
-        gg.sleep(100)
-        gg.searchNumber(input[1], gg.TYPE_DOUBLE, false, gg.SIGN_EQUAL, 0, -1, 0)
-        local revert = gg.getResults(100000)
-        gg.editAll("-9999999", gg.TYPE_DOUBLE)
-        gg.clearResults()
-        gg.sleep(100)
-        gg.alert("تم! اشتري المنتج الآن وتفقد دنانيرك.")
+       gg.clearResults()
+    gg.toast("جاري التفعيل...")
+    
+    gg.searchNumber("8245935277855761735", gg.TYPE_QWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+revert = gg.getResults(1000, nil, nil, nil, nil, nil, nil, nil, nil)
+gg.editAll("0", gg.TYPE_QWORD)
+
+    gg.searchNumber(":600027", gg.TYPE_BYTE)
+    local r = gg.getResults(100000)
+
+    if #r == 0 then
+        gg.alert("❌ لم يتم العثور على القيم")
+        return
     end
+
+    gg.editAll(":400009", gg.TYPE_BYTE)
+    gg.clearResults()
+
+    gg.toast("✅ تم تفعيل ")
+end
+    
     
     if choice == 3 then -- Studio
         gg.alert("لا تفتح الاستديو الآن. انتظر حتى تظهر رسالة 'تم'.")
