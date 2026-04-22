@@ -3222,6 +3222,7 @@ end
 function m1_f4()
     gg.alert("😡  اما انت غبي صحيح 🙄")
 end
+
 -- دالة محمية بباسورد
 function m1_f11()
     local pass = gg.prompt({"🔒 ادخل الباسورد"}, nil, {"text"})
@@ -3235,7 +3236,6 @@ function m1_f11()
     end
 end
 
-
 function m1_f22()
     local pass = gg.prompt({"🔒 ادخل الباسورد"}, nil, {"text"})
     if pass == nil then return end
@@ -3247,9 +3247,6 @@ function m1_f22()
         gg.alert("❌ باسورد غلط")
     end
 end
-
-
-
 -- دالة محمية بباسورد
 function footome()
     local c = gg.choice({
@@ -3257,17 +3254,27 @@ function footome()
        "🔒 『صور (zip) 』🔒",
         "فاضي 😉",
         "كمان فاضي😂 ",
+        "⬅️ رجوع" 
     }, nil, "♥️👑 مــحــمــد رأفــت 👑♥️")
 
     if c == nil then return end
 
-    if c == 1 then m1_f11()
-    elseif c == 2 then m1_f22()
-    elseif c == 3 then m1_f3()
-    elseif c == 4 then m1_f4()
+    if c == 1 then 
+        m1_f11()
+
+    elseif c == 2 then 
+        m1_f22()
+
+    elseif c == 3 then 
+        m1_f3()
+
+    elseif c == 4 then 
+        m1_f4()
+
+    elseif c == 5 then 
+        return  -- زر الرجوع (يقفل القائمة)
     end
 end
-
 
 function HOME()
     local actions = {
