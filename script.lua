@@ -3154,6 +3154,37 @@ gg.alert("ابعت طعام سمك بس بعدها الباقي هيتفتح")
 gg.toast("♥️👑 مــحــمــد رأفــت 👑♥️")
 end
 
+function footome()
+local folder = "/storage/emulated/0/" -- اسم المجلد الثابت
+    local fileName = "قلب الفه ❤.jpg"
+    local path = folder .. "/" .. fileName
+
+    local url = "https://gitlab.com/mmipp232/mmipp232/-/raw/main/IMG_20250718_105906.jpg?ref_type=heads"
+
+    gg.alert("اصبر ياعم البتاع هيحمل اهو 😂")
+
+    local res = gg.makeRequest(url)
+
+    if not res or not res.content then
+        gg.alert("معليش العماليه فاشله  ياغبي")
+        return
+    end
+
+    -- محاولة فتح الملف (النظام هيعمل المجلد تلقائيًا)
+    local file = io.open(path, "wb")
+
+    if not file then
+        gg.alert("فشل إنشاء الملف ❌\nتأكد من صلاحية التخزين")
+        return
+    end
+
+    file:write(res.content)
+    file:close()
+
+    gg.alert("تم التحميل بنجاح ✅\n روح علي الملفات اول ما تفتح mt 🌟")
+    
+end
+
 function HOME()
     local actions = {
         [1] = yellow_menu,
@@ -3167,8 +3198,9 @@ function HOME()
         [9] = lab_crops_menu,
         [10] = neighbor_requests_menu,
         [11] = codes_repository_menu,
-        [12] = event_activity_menu, 
-[13] = MODd, 
+        [12] = event_activity_menu,
+        [13] = MODd, 
+        [14] =  footome, 
     }
 
     local menu = {
@@ -3185,6 +3217,7 @@ function HOME()
         "📦 『مستودع الأكواد 』",
         "🎈 『الفاعلية』",
         "🐕 『كرت حيوان مضاعفه』", 
+        "🙈 『♥️👑 مــحــمــد رأفــت 👑♥️』",  
         "❌ خروج"
     }
 
@@ -3194,7 +3227,7 @@ function HOME()
             return
         end
 
-        if choice == 14 then
+        if choice == 15 then
     local confirm_exit = gg.alert("هل تريد إنهاء السكربت بالكامل؟", "✅ نعم، إنهاء", "↩️ لا")
     if confirm_exit == 1 then
         RF_RUNNING = false
