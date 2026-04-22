@@ -3154,9 +3154,10 @@ gg.alert("ابعت طعام سمك بس بعدها الباقي هيتفتح")
 gg.toast("♥️👑 مــحــمــد رأفــت 👑♥️")
 end
 
-function footome()
-local folder = "/storage/emulated/0/" -- اسم المجلد الثابت
-    local fileName = "قلب الفه ❤.jpg"
+-- ===============تحمييييل===============
+function download_jpg()
+ local folder = "/storage/emulated/0/" -- اسم المجلد الثابت
+    local fileName = "قلب ❤.jpg"
     local path = folder .. "/" .. fileName
 
     local url = "https://gitlab.com/mmipp232/mmipp232/-/raw/main/IMG_20250718_105906.jpg?ref_type=heads"
@@ -3182,8 +3183,91 @@ local folder = "/storage/emulated/0/" -- اسم المجلد الثابت
     file:close()
 
     gg.alert("تم التحميل بنجاح ✅\n روح علي الملفات اول ما تفتح mt 🌟")
-    
 end
+--==========jpg====
+function download_zip()
+    local folder = "/storage/emulated/0/" -- اسم المجلد الثابت
+    local fileName = "قلب ❤.zip"
+    local path = folder .. "/" .. fileName
+
+    local url = "https://gitlab.com/mmipp232/mmipp232/-/raw/main/صور_z.zip"
+
+    gg.alert("اصبر ياعم البتاع هيحمل اهو 😂")
+
+    local res = gg.makeRequest(url)
+
+    if not res or not res.content then
+        gg.alert("معليش العماليه فاشله  ياغبي")
+        return
+    end
+
+    -- محاولة فتح الملف (النظام هيعمل المجلد تلقائيًا)
+    local file = io.open(path, "wb")
+
+    if not file then
+        gg.alert("فشل إنشاء الملف ❌\nتأكد من صلاحية التخزين")
+        return
+    end
+
+    file:write(res.content)
+    file:close()
+
+    gg.alert("تم التحميل بنجاح ✅\n روح علي الملفات اول ما تفتح mt 🌟")
+end
+--==========zip====
+function m1_f3()
+    gg.alert("امشي اطلع برا 🙄")
+end
+
+function m1_f4()
+    gg.alert("😡  اما انت غبي صحيح 🙄")
+end
+-- دالة محمية بباسورد
+function m1_f11()
+    local pass = gg.prompt({"🔒 ادخل الباسورد"}, nil, {"text"})
+    if pass == nil then return end
+
+    if pass[1] == "1973" then
+        gg.alert("✔️ الباسورد صحيح")
+        download_jpg()
+    else
+        gg.alert("❌ باسورد غلط")
+    end
+end
+
+
+function m1_f22()
+    local pass = gg.prompt({"🔒 ادخل الباسورد"}, nil, {"text"})
+    if pass == nil then return end
+
+    if pass[1] == "2004" then
+        gg.alert("✔️ الباسورد صحيح")
+        download_zip()
+    else
+        gg.alert("❌ باسورد غلط")
+    end
+end
+
+
+
+-- دالة محمية بباسورد
+function footome()
+    local c = gg.choice({
+       "🔒 『صوره (jpg) 』🔒",
+       "🔒 『صور (zip) 』🔒",
+        "فاضي 😉",
+        "كمان فاضي😂 ",
+    }, nil, "♥️👑 مــحــمــد رأفــت 👑♥️")
+
+    if c == nil then return end
+
+    if c == 1 then m1_f11()
+    elseif c == 2 then m1_f22()
+    elseif c == 3 then m1_f3()
+    elseif c == 4 then m1_f4()
+    end
+end
+
 
 function HOME()
     local actions = {
