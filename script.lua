@@ -881,40 +881,63 @@ end
 
 function farm_activations_menu()
     local menu = {
-        "🏠 بيت الزوار ",
+        "📘 شراء كتب الزوار ",
+        "🌟 فتح الثلث نجوم للزوار",
         "🙋 بيت خالد ",
         "🎟️ زيادة تذاكر التنظيف ",
         "📝 انجاز المهام اليومية",
         " رفع مستوى 🆙",
         "🎂 كعكة عيد الميلاد 10800 -> 80",
-        "📉 تقليل كعكة الحب 10800 -> 1",
         "⬅️ رجوع"
     }
     
     local choice = gg.choice(menu, nil,"✪⊷⊷⊷《  ♥️👑 مــحــمــد رأفــت 👑♥️  》⊷⊶⊷✪")
     if choice == nil then return end
-    
     if choice == 1 then -- Visitor House
-        SMART_ENGINE("467;1::5", 64, "1", "0", 1, 1, 1, 1) -- 467D;1E::5 -> 1 -> 0
-        SMART_ENGINE("36;162;1095", 64, nil, "0", 1, 0, 1, 1)
-        SMART_ENGINE("1;3;2;20;4;5;6;14::999", 64, "1", "0", 1, 1, 1, 1)
-        gg.toast("تم تفعيل بيت الزوار")
+        gg.searchNumber("467D;1E", gg.TYPE_AUTO)
+  gg.refineNumber("1", gg.TYPE_AUTO)
+  gg.getResults(100)
+  gg.editAll("0", gg.TYPE_DOUBLE)
+
+  gg.clearResults()
+  gg.searchNumber("1095;162;36", gg.TYPE_DOUBLE)
+  gg.getResults(100)
+  gg.editAll("0", gg.TYPE_DOUBLE)
+  gg.toast("تم تفعيل شراء كتب الزوار")
+    end
+    if choice == 2 then 
+      gg.searchNumber("1E;3E;2E;20E;4E;5E;6E;14E::999", gg.TYPE_DOUBLE)
+  gg.refineNumber("1", gg.TYPE_DOUBLE)
+  gg.getResults(100)
+  gg.editAll("0", gg.TYPE_DOUBLE)
+  gg.clearResults()
+  gg.toast("تم فتح الثلث نجوم الزوار")
     end
     
-    if choice == 2 then -- Khaled House
-        SMART_ENGINE("50000;5;1", 4, "1", "1000", 1, 1, 1, 1)
-        SMART_ENGINE("Q'size_x'", 1, nil, "0", 1, 0, 1, 1)
-        SMART_ENGINE("Q'size_y'", 1, nil, "0", 1, 0, 1, 1)
-        gg.alert("تم تفعيل بيت خالد. اشتري السجادة وخزنها في مستودع الاثاث.")
+    if choice == 3 then -- Khaled House
+        gg.searchNumber("Q'size_y'",1,false,536870912,0,-1,0)
+gg.getResults(12000)
+gg.editAll("0",1)
+gg.clearResults()
+gg.searchNumber("Q'size_x'",1,false,536870912,0,-1,0)
+gg.getResults(12000)
+gg.editAll("0",1)
+gg.clearResults()
+gg.searchNumber("50000;5;1",4,false,536870912,0,-1,0)
+gg.refineNumber("1",4,false,536870912,0,-1,0)
+gg.getResults(10000)
+gg.editAll("999999",4)
+
+        gg.alert("تم تفعيل بيت خالد. اشتري السجادة")
     end
     
-    if choice == 3 then -- Cleaning Tickets
+    if choice == 4 then -- Cleaning Tickets
         gg.alert("افتح قايمة الجيران واختار تذاكر التنظيف")
         SMART_ENGINE("20;300", 64, "20", "300", 1, 1, 1, 1)
         gg.toast("تم زيادة تذاكر التنظيف")
     end
     
-    if choice == 4 then -- Daily Missions
+    if choice == 5 then -- Daily Missions
         gg.clearResults()
         gg.searchNumber("27000~27099;1~2000", 64) -- Double
         local r = gg.getResults(100000)
@@ -929,13 +952,13 @@ function farm_activations_menu()
         gg.toast("تم انجاز المهام اليومية")
     end
     
-    if choice == 5 then -- Level Up
+    if choice == 6 then -- Level Up
         SMART_ENGINE("Q'tree_spacing'", 1, nil, "0", 1, 0, 1, 1)
         SMART_ENGINE("Q'size_x'", 1, nil, "0", 1, 0, 1, 1)
         SMART_ENGINE("Q'size_y'", 1, nil, "0", 1, 0, 1, 1)
     end
     
-    if choice == 6 then -- Birthday Cake
+    if choice == 7 then -- Birthday Cake
         gg.alert("لازم الكعكه تكون في وضع السحب")
         gg.clearResults()
         gg.searchNumber("43997644991024", 32) -- QWORD
@@ -953,12 +976,6 @@ function farm_activations_menu()
         gg.clearResults()
         gg.unrandomizer(7, 0, 0.0, 0.0)
         gg.toast("تم تفعيل كعكة عيد الميلاد")
-    end
-
-    if choice == 7 then -- Reduce Love Cake (New)
-        gg.alert("يجب أن تكون الكعكة في وضع السحب!")
-        SMART_ENGINE("10800", 4, nil, "1", 1, 0, 1, 1)
-        gg.alert("تم تقليل كعكة الحب الى 1")
     end
     
     if choice == 8 then return end
