@@ -888,6 +888,7 @@ function farm_activations_menu()
         "📝 انجاز المهام اليومية",
         " رفع مستوى 🆙",
         "🎂 كعكة عيد الميلاد 10800 -> 80",
+		"استخراج اي حاجه من الطاووس 🦆",
         "⬅️ رجوع"
     }
     
@@ -978,7 +979,26 @@ gg.editAll("999999",4)
         gg.toast("تم تفعيل كعكة عيد الميلاد")
     end
     
-    if choice == 8 then return end
+    if choice == 8 then 
+        gg.alert("تحذير: يجب أن يكون الطاووس (كود 6001) في المستودع.\nافتح المستودع وانتظر.")
+        gg.sleep(1000)
+        local input = gg.prompt({"أدخل كود الطاووس (عادة 6001):"}, {"6001"}, {"number"})
+        if input == nil then return end
+        
+        gg.sleep(100)
+        gg.searchNumber(input[1], gg.TYPE_DWORD, false, gg.SIGN_EQUAL, 0, -1, 0)
+        local revert = gg.getResults(100000)
+        
+        local input1 = gg.prompt({"أدخل كود الآلة أو الحيوان الجديد:"}, {"590048"}, {"number"})
+        if input1 == nil then return end
+        
+        gg.editAll(input1[1], gg.TYPE_DWORD)
+        gg.sleep(100)
+        gg.clearResults()
+        gg.alert("تم! أخرج الطاووس من المستودع لتجد العنصر الجديد.")
+    end
+    
+    if choice == 9 then return end
     
     return farm_activations_menu()
 end
